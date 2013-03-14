@@ -1,0 +1,18 @@
+<%=listen_protocol%>
+    Address 0.0.0.0
+    Port <%= port %>
+
+    <% if listen_protocol == "ListenHTTPS"%>
+    Cert "/etc/ssl/certs/server.pem"
+    <% end %>
+
+    ## allow PUT and DELETE also (by default only GET, POST and HEAD)?:
+    xHTTP	    1
+
+    Service
+        BackEnd
+            Address <%= backend_ip %>
+            Port <%= backend_port %>
+        End
+    End
+End
