@@ -3,7 +3,7 @@
     Port <%= port %>
 
     <% if listen_protocol == "ListenHTTPS"%>
-    Cert "/etc/ssl/certs/server.pem"
+    Cert "<%= ssl_combined_path %>"
     <% end %>
 
     ## allow PUT and DELETE also (by default only GET, POST and HEAD)?:

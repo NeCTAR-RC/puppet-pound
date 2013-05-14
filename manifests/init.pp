@@ -17,6 +17,10 @@ class pound($vhosts) {
     notify  => Service['pound'],
   }
 
+  file {'/etc/default/pound':
+    content => 'startup=1',
+  }
+
   file {'/var/run/pound':
     ensure => directory,
   }
