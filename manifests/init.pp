@@ -1,4 +1,7 @@
-class pound($vhosts) {
+class pound {
+
+  include concat::setup
+  $pound_cfg = '/etc/pound/pound.cfg'
 
   package {'pound':
     ensure => installed,
@@ -9,12 +12,17 @@ class pound($vhosts) {
     require => Package['pound'],
   }
 
-  file {'/etc/pound/pound.cfg':
-    owner   => root,
-    group   => root,
-    mode    => '0644',
+  concat {$pound_cfg:
+    owner  => root,
+    group  => root,
+    mode   => '0644',
+    notify => Service['pound'],
+  }
+
+  concat::fragment {'01-header':
+    target  => $pound_cfg,
     content => template('pound/pound.cfg.erb'),
-    notify  => Service['pound'],
+    order   => 01,
   }
 
   file {'/etc/default/pound':
@@ -36,8 +44,8 @@ class pound($vhosts) {
 
 
   define proxy($port, $ssl=true, $backend_ip, $backend_port, $nagios_check=true) {
-    include pound
 
+    include pound
     if $ssl {
       $listen_protocol = 'ListenHTTPS'
 
@@ -50,13 +58,10 @@ class pound($vhosts) {
       $listen_protocol = 'ListenHTTP'
     }
 
-    file {"/etc/pound/sites-enabled/${name}.cfg":
-      ensure  => present,
-      owner   => root,
-      group   => root,
-      mode    => '0644',
+    concat::fragment {"vhost-$name":
+      target  => $pound::pound_cfg,
       content => template('pound/vhost.cfg.erb'),
-      notify  => Service['pound'],
+      order   => 10,
     }
 
     if $nagios_check {

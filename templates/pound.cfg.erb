@@ -29,6 +29,3 @@ Control "/var/run/pound/poundctl.socket"
 
 ######################################################################
 
-<% vhosts.each do |vhost| %>
-Include "/etc/pound/sites-enabled/<%= vhost %>.cfg"
-<% end %>
