@@ -33,16 +33,6 @@ class pound {
     ensure => directory,
   }
 
-  file {'/etc/pound/sites-enabled':
-    ensure  => directory,
-    recurse => true,
-    purge   => true,
-    force   => true,
-    notify  => Service['pound'],
-    require => Package['pound'],
-  }
-
-
   define proxy($port, $ssl=true, $backend_ip, $backend_port, $nagios_check=true) {
 
     include pound
