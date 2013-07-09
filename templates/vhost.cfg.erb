@@ -16,5 +16,11 @@
             Address <%= backend_ip %>
             Port <%= backend_port %>
         End
+        <% if emergency_ip %>
+        Emergency
+	    Address <%= emergency_ip %>
+	    Port <%= emergency_port %>
+        End
+        <% end %>  
     End
 End

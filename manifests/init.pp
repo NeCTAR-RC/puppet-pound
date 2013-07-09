@@ -33,7 +33,7 @@ class pound {
     ensure => directory,
   }
 
-  define proxy($port, $ssl=true, $backend_ip, $backend_port, $nagios_check=true) {
+  define proxy($port, $ssl=true, $backend_ip, $backend_port, $emergency_ip=false, $emergency_port=false, $nagios_check=true) {
 
     include pound
     if $ssl {
