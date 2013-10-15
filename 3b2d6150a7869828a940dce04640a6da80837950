@@ -1,0 +1,8 @@
+Change-Id: I3b2d6150a7869828a940dce04640a6da80837950
+Code-Review+2: Russell Sim <russell.sim@gmail.com>
+Verified+1: Russell Sim <russell.sim@gmail.com>
+Submitted-by: Russell Sim <russell.sim@gmail.com>
+Submitted-at: Wed, 16 Oct 2013 09:58:00 +1100
+Reviewed-on: https://review.rc.nectar.org.au/881
+Project: NeCTAR-RC/puppet-pound
+Branch: refs/meta/config
