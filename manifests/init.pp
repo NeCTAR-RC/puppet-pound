@@ -1,4 +1,4 @@
-class pound {
+class pound($logrotation='weekly') {
 
   include concat::setup
   $pound_cfg = '/etc/pound/pound.cfg'
@@ -31,6 +31,12 @@ class pound {
 
   file {'/var/run/pound':
     ensure => directory,
+  }
+
+  logrotate::rule { 'pound':
+    ensure  => present,
+    path    => '/var/log/pound.log',
+    options => [ 'rotate 52', $logrotation, 'missingok', 'notifempty', 'delaycompress', 'compress' ],
   }
 
   define proxy($port, $ssl=true, $backend_ip, $backend_port, $emergency_ip=false, $emergency_port=false, $nagios_check=true) {
