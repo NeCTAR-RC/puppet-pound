@@ -33,6 +33,12 @@ class pound {
     ensure => directory,
   }
 
+  logrotate::rule { 'pound':
+    ensure  => present,
+    path    => '/var/log/pound.log',
+    options => [ 'rotate 7', 'daily', 'missingok', 'notifempty', 'delaycompress', 'compress' ],
+  }
+
   define proxy($port, $ssl=true, $backend_ip, $backend_port, $emergency_ip=false, $emergency_port=false, $nagios_check=true) {
 
     include pound
