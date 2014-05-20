@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAT3//9js\u003d",
+        "filename": "manifests/init.pp",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2014-05-20T04:07:27Z",
+      "side": 1,
+      "message": "Can we rotate by default weekly and 52 weeks? We currently save everything so have years of data.",
+      "revId": "40be0ca35d1d003a4bb0f9092c918630c631e9db",
+      "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
+      "unresolved": false
+    }
+  ]
+}
