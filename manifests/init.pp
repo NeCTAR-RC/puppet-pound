@@ -39,8 +39,12 @@ class pound($logrotation='weekly') {
     options => [ 'rotate 52', $logrotation, 'missingok', 'notifempty', 'delaycompress', 'compress' ],
   }
 
-  define proxy($port, $ssl=true, $backend_ip, $backend_port, $emergency_ip=false, $emergency_port=false, $nagios_check=true) {
-
+  define proxy($port, $ssl=true, $backend_ip=false, $backends=undef, $backend_port, $emergency_ip=false, $emergency_port=false, $nagios_check=true) {
+    if $backend_ip {
+      $backends_real = [$backend_ip,]
+    } else {
+      $backends_real = $backends
+    }
     include pound
     if $ssl {
       $listen_protocol = 'ListenHTTPS'
