@@ -9,18 +9,20 @@
     <% end %>
 
     ## allow other HTTP verbs
-    xHTTP	    2
+    xHTTP 2
 
     Service
-        BackEnd
-            Address <%= backend_ip %>
+<% backends_real.each do |backend| -%>
+         BackEnd
+            Address <%= backend %>
             Port <%= backend_port %>
-        End
+         End
+<% end -%>
         <% if emergency_ip %>
         Emergency
-	    Address <%= emergency_ip %>
-	    Port <%= emergency_port %>
+            Address <%= emergency_ip %>
+            Port <%= emergency_port %>
         End
-        <% end %>  
+        <% end %>
     End
 End
