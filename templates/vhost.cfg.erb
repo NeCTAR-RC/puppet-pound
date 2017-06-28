@@ -1,27 +1,27 @@
-#################### VHOST <%= name %> #######################################
+#################### VHOST <%= @name %> #######################################
 
-<%=listen_protocol%>
+<%=@listen_protocol%>
     Address 0.0.0.0
-    Port <%= port %>
+    Port <%= @port %>
 
-    <% if listen_protocol == "ListenHTTPS"%>
-    Cert "<%= ssl_combined_path %>"
+    <% if @listen_protocol == "ListenHTTPS"%>
+    Cert "<%= @ssl_combined_path %>"
     <% end %>
 
     ## allow other HTTP verbs
     xHTTP 2
 
     Service
-<% backends_real.each do |backend| -%>
+<% @backends_real.each do |backend| -%>
          BackEnd
-            Address <%= backend %>
-            Port <%= backend_port %>
+            Address <%= @backend %>
+            Port <%= @backend_port %>
          End
 <% end -%>
-        <% if emergency_ip %>
+        <% if @emergency_ip %>
         Emergency
-            Address <%= emergency_ip %>
-            Port <%= emergency_port %>
+            Address <%= @emergency_ip %>
+            Port <%= @emergency_port %>
         End
         <% end %>
     End
