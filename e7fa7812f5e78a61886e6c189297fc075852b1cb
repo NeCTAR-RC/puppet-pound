@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ae5cdf2_ae0eba32",
+        "filename": "templates/vhost.cfg.erb",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-06-29T00:40:06Z",
+      "side": 1,
+      "message": "don\u0027t need @ for this variable",
+      "range": {
+        "startLine": 17,
+        "startChar": 24,
+        "endLine": 17,
+        "endChar": 32
+      },
+      "revId": "e7fa7812f5e78a61886e6c189297fc075852b1cb",
+      "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
+      "unresolved": false
+    }
+  ]
+}
