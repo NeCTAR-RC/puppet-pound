@@ -22,7 +22,7 @@ class pound($logrotation='weekly') {
   concat::fragment {'01-header':
     target  => $pound_cfg,
     content => template('pound/pound.cfg.erb'),
-    order   => 01,
+    order   => '01',
   }
 
   file {'/etc/default/pound':
